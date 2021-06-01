@@ -1,4 +1,4 @@
-## Welcome to QRreturn.com
+## Welcome to QRturn.com
 
 You can read QR codes without installing an app.
 
