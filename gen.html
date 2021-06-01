@@ -1,0 +1,286 @@
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QRturn APP</title>
+  <script src="/assets/js/jsQR.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Ropa Sans', sans-serif;
+      color: #333;
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #githubLink {
+      position: absolute;
+      right: 0;
+      top: 12px;
+      color: #2D99FF;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 40px;
+    }
+
+    #loadingMessage {
+      text-align: center;
+      padding: 40px;
+      background-color: #eee;
+    }
+
+    #canvas {
+      width: 100%;
+    }
+
+    #output {
+      margin-top: 20px;
+      background: #eee;
+      padding: 10px;
+      padding-bottom: 0;
+    }
+
+    #output div {
+      padding-bottom: 10px;
+      word-wrap: break-word;
+    }
+
+    #noQRFound {
+      text-align: center;
+    }
+  </style>
+
+
+<style>
+
+body {
+  background-color: #696969;
+}  
+.page {
+max-width: 500px;
+margin:0 auto;
+}
+
+.dialog{
+    width: auto;
+    max-width: 90%;
+}
+
+.dialog {//min-height:350px;}
+#iput-dialog {min-height:200px;}
+#inform-dialog {min-height:100px;}
+
+.action-sheet {
+  max-width: 500px;
+  /  left: 15%;
+  //  right: 15%;
+}
+
+ons-input, ons-radio, ons-checkbox, ons-search-input {
+    display: block;
+}
+
+.page__background {
+  background-color: #FFFFFF;
+
+}
+
+.speed-dial.fab--bottom__right, button.fab--bottom__right, ons-fab.fab--bottom__right {
+  bottom: 60px;
+}
+
+</style>
+
+</head>
+<body>
+
+<ons-page>  
+
+  <ons-tabbar position="auto" animation="none">
+    <ons-tab onClick="readQR()" label="Read QR" icon="fa-mountain" page="readQR.html">
+    </ons-tab>
+    <ons-tab onClick="genQR()" label="Gen QR" icon="fa-wallet" page="genQR.html">
+    </ons-tab>
+<!--     <ons-tab onClick="goBlockChain()" label="BlockChain" icon="fa-dice-d20" page="chain.html">
+    </ons-tab>
+ -->    
+  </ons-tabbar>
+</ons-page>
+
+<template id="readQR.html">
+<ons-page id="helloworld-page">
+    <ons-toolbar>
+      <div class="left"><ons-back-button onClick="goBack()">Back</ons-back-button></div>
+      <div class="center">Read QR</div>
+    </ons-toolbar>
+  <div id="loadingMessage">🎥 Unable to access Camera (please make sure you have a Camera enabled)</div>
+  <canvas id="canvas" hidden></canvas>
+  <div id="output" hidden>
+    <div id="outputMessage">No QR code detected.</div>
+    <div hidden><b>Data:</b> <span id="outputData"></span></div>
+  </div>
+</ons-page>
+
+</template>
+
+<template id="genQR.html">
+  <ons-page id="genQR">
+
+<div style="margin-top: 44px; display: block" id="walletLayout">
+
+    <ons-toolbar>
+      <div class="left"><ons-back-button onClick="goBack()">Back</ons-back-button></div>
+      <div class="center">Gen QR</div>
+    </ons-toolbar>
+
+  <ons-card style="margin: 20px;" id="walletCard">
+    <center>
+    <img id="addressQR" src="" alt="Onsen UI" style="width: 50%">
+    <!-- 
+    <img id="addressQR" src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=NULL" alt="Onsen UI" style="width: 50%"> -->
+<br>
+
+    <ons-input modifier="underbar" placeholder="Wallet Address" id="address">
+      <input id="inputAddress" type="text" class="text-input text-input--underbar" placeholder="Wallet Address"  style="text-align: center;">
+      <span class="text-input__label text-input--underbar__label text-input--material__label--active">Plain text.</span>
+    </ons-input>
+
+<br>
+      <div>
+        <ons-button id="sendButton" style="display: none" onClick="showSendDogeBell()"><ons-icon icon="fa-paper-plane"></ons-icon>&#x20;Send</ons-button>&#x20;
+        <ons-button onClick="copyAddress()" id="copyButton" data-clipboard-text="AAAA"><ons-icon icon="fa-copy"></ons-icon>&#x20;Copy</ons-button>&#x20;
+        <ons-button id="backupButton" style="display: none"  onClick="showMnemonicBackupDialog()"><ons-icon icon="file-export"></ons-icon>&#x20;Backup</ons-button>&#x20;
+      </div>
+<br>      
+    </center>
+    <div class="content">
+      <ons-list>
+        <ons-list-header>Information</ons-list-header>
+        <ons-list-item>Amount &nbsp;:&nbsp; <span id="dogebellAmount"></span>&nbsp;BELL</ons-list-item>
+        <ons-list-item>Transaction &nbsp;:&nbsp; <span id="bellTransaction"></span></ons-list-item>
+      </ons-list>
+    </div>
+  </ons-card>
+</ons-page>
+</template>
+
+  <script>
+
+    function goBack() {
+      if(RETURNURL) {
+        location.href = RETURNURL
+      }else{
+        location.href = "/"
+      }
+    }
+
+
+function genQR(){
+
+}
+
+function readQR(){
+    var video = document.createElement("video");
+    var canvasElement = document.getElementById("canvas");
+    var canvas = canvasElement.getContext("2d");
+    var loadingMessage = document.getElementById("loadingMessage");
+    var outputContainer = document.getElementById("output");
+    var outputMessage = document.getElementById("outputMessage");
+    var outputData = document.getElementById("outputData");
+
+    function drawLine(begin, end, color) {
+      canvas.beginPath();
+      canvas.moveTo(begin.x, begin.y);
+      canvas.lineTo(end.x, end.y);
+      canvas.lineWidth = 4;
+      canvas.strokeStyle = color;
+      canvas.stroke();
+    }
+
+    //if(!ACTION && ACTION == "read" ){
+      // Use facingMode: environment to attemt to get the front camera on phones
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+        video.srcObject = stream;
+        video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+        video.play();
+        requestAnimationFrame(tick);
+      });
+    //}
+
+    function tick() {
+      loadingMessage.innerText = "⌛ Loading video..."
+      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        loadingMessage.hidden = true;
+        canvasElement.hidden = false;
+        outputContainer.hidden = false;
+
+        canvasElement.height = video.videoHeight;
+        canvasElement.width = video.videoWidth;
+        canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+        var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+        var code = jsQR(imageData.data, imageData.width, imageData.height, {
+          inversionAttempts: "dontInvert",
+        });
+        if (code) {
+          drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+          drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+          drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+          drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+          outputMessage.hidden = true;
+          outputData.parentElement.hidden = false;
+          outputData.innerText = code.data;
+
+          if(RETURNURL) {
+            RETURNURL = decodeURIComponent(RETURNURL)
+            RETURNURL = updateQueryStringParameter(RETURNURL,"QR",code.data)
+            //alert(RETURNURL)
+            location.href = RETURNURL
+          }
+
+        } else {
+          outputMessage.hidden = false;
+          outputData.parentElement.hidden = true;
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+}
+
+
+    function updateQueryStringParameter(uri, key, value) {
+      var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+      var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+      if (uri.match(re)) {
+        return uri.replace(re, '$1' + key + "=" + value + '$2');
+      }
+      else {
+        return uri + separator + key + "=" + value;
+      }
+    }
+    
+
+    function getParameterByName(name, url = window.location.href) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    var RETURNURL = getParameterByName("returnUrl")
+    var ACTION = getParameterByName("action")
+    var DATA = getParameterByName("data")
+
+  </script>
+</body>
+</html>
