@@ -1,0 +1,220 @@
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jsQR Demo</title>
+  <script src="https://qrturn.com/qrturn.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Ropa Sans', sans-serif;
+      color: #333;
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #githubLink {
+      position: absolute;
+      right: 0;
+      top: 12px;
+      color: #2D99FF;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 40px;
+    }
+
+    #loadingMessage {
+      text-align: center;
+      padding: 40px;
+      background-color: #eee;
+    }
+
+    #canvas {
+      width: 100%;
+    }
+
+    #output {
+      margin-top: 20px;
+      background: #eee;
+      padding: 10px;
+      padding-bottom: 0;
+    }
+
+    #output div {
+      padding-bottom: 10px;
+      word-wrap: break-word;
+    }
+
+    #noQRFound {
+      text-align: center;
+    }
+  </style>
+
+
+<style>
+
+body {
+  background-color: #696969;
+}  
+.page {
+max-width: 500px;
+margin:0 auto;
+}
+
+.dialog{
+    width: auto;
+    max-width: 90%;
+}
+
+.dialog {//min-height:350px;}
+#iput-dialog {min-height:200px;}
+#inform-dialog {min-height:100px;}
+
+.action-sheet {
+  max-width: 500px;
+  /  left: 15%;
+  //  right: 15%;
+}
+
+ons-input, ons-radio, ons-checkbox, ons-search-input {
+    display: block;
+}
+
+.page__background {
+  background-color: #FFFFFF;
+
+}
+
+.speed-dial.fab--bottom__right, button.fab--bottom__right, ons-fab.fab--bottom__right {
+  bottom: 60px;
+}
+
+</style>
+
+</head>
+<body>
+
+<ons-page id="helloworld-page">
+    <ons-toolbar>
+      <div class="left"><ons-back-button onClick="goBack()">Back</ons-back-button></div>
+      <div class="center">QR Scanner</div>
+    </ons-toolbar>
+  <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
+  <canvas id="canvas" hidden></canvas>
+  <div id="output" hidden>
+    <div id="outputMessage">No QR code detected.</div>
+    <div hidden><b>Data:</b> <span id="outputData"></span></div>
+  </div>
+
+</ons-page>
+
+
+
+  <script>
+
+function goBack() {
+  if(RETURNURL) {
+    location.href = RETURNURL
+  }
+}
+
+    var video = document.createElement("video");
+    var canvasElement = document.getElementById("canvas");
+    var canvas = canvasElement.getContext("2d");
+    var loadingMessage = document.getElementById("loadingMessage");
+    var outputContainer = document.getElementById("output");
+    var outputMessage = document.getElementById("outputMessage");
+    var outputData = document.getElementById("outputData");
+
+    function drawLine(begin, end, color) {
+      canvas.beginPath();
+      canvas.moveTo(begin.x, begin.y);
+      canvas.lineTo(end.x, end.y);
+      canvas.lineWidth = 4;
+      canvas.strokeStyle = color;
+      canvas.stroke();
+    }
+
+    // Use facingMode: environment to attemt to get the front camera on phones
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+      video.srcObject = stream;
+      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+      video.play();
+      requestAnimationFrame(tick);
+    });
+
+    function tick() {
+      loadingMessage.innerText = "⌛ Loading video..."
+      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        loadingMessage.hidden = true;
+        canvasElement.hidden = false;
+        outputContainer.hidden = false;
+
+        canvasElement.height = video.videoHeight;
+        canvasElement.width = video.videoWidth;
+        canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+        var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+        var code = jsQR(imageData.data, imageData.width, imageData.height, {
+          inversionAttempts: "dontInvert",
+        });
+        if (code) {
+          drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+          drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+          drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+          drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+          outputMessage.hidden = true;
+          outputData.parentElement.hidden = false;
+          outputData.innerText = code.data;
+
+          if(RETURNURL) {
+            RETURNURL = decodeURIComponent(RETURNURL)
+            RETURNURL = updateQueryStringParameter(RETURNURL,"QR",code.data)
+            //alert(RETURNURL)
+            location.href = RETURNURL
+          }
+
+        } else {
+          outputMessage.hidden = false;
+          outputData.parentElement.hidden = true;
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+
+    function updateQueryStringParameter(uri, key, value) {
+      var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+      var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+      if (uri.match(re)) {
+        return uri.replace(re, '$1' + key + "=" + value + '$2');
+      }
+      else {
+        return uri + separator + key + "=" + value;
+      }
+    }
+    
+
+    function getParameterByName(name, url = window.location.href) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    var RETURNURL = getParameterByName("RETURNURL")
+
+
+  </script>
+</body>
+</html>
