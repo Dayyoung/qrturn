@@ -14,4 +14,7 @@ Integrate the QR web app with your app.
 
 [https://qrturn.com/gen?data=helloworld](https://qrturn.com/gen?data=helloworld)
 
-[For more details see](https://qrturn.com/api).
+### How to integrate from your APP.
+
+[https://qrturn.com/api](https://qrturn.com/api)
+
