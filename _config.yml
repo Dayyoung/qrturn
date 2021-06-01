@@ -1,4 +1,5 @@
 theme: jekyll-theme-minimal
-title: QRturn.com
+title: QRTurn.com
 description: HTML5 QR APP
 logo: https://qrturn.com/qrturn.png
+port: 80
