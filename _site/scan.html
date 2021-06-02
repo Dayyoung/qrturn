@@ -106,7 +106,7 @@ ons-input, ons-radio, ons-checkbox, ons-search-input {
 <ons-page id="helloworld-page">
     <ons-toolbar>
       <div class="left"><ons-back-button onClick="goBack()">Back</ons-back-button></div>
-      <div class="center">QR Scanner</div>
+      <div class="center">QRTrun.com (SCAN)</div>
     </ons-toolbar>
   <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
   <canvas id="canvas" hidden></canvas>
@@ -120,7 +120,7 @@ ons-input, ons-radio, ons-checkbox, ons-search-input {
 
 
   <script>
-    
+
 function goBack() {
   if(RETURNURL) {
     location.href = RETURNURL
@@ -178,7 +178,7 @@ function goBack() {
 
           if(RETURNURL) {
             RETURNURL = decodeURIComponent(RETURNURL)
-            RETURNURL = updateQueryStringParameter(RETURNURL,"QR",code.data)
+            RETURNURL = updateQueryStringParameter(RETURNURL,"data",code.data)
             //alert(RETURNURL)
             location.href = RETURNURL
           }

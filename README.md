@@ -1,20 +1,20 @@
 ## Welcome to QRTurn.com
 
-You can read QR codes without installing an app.
+You can scan QR codes without installing an app.
 
 You can create QR codes without installing an app.
 
-Integrate the QR web app with your app.
+Integrate QR code with your app.
 
-### How to read QR code.
+### How to scan QR code.
 
-[https://qrturn.com/read](https://qrturn.com/read)
+[https://qrturn.com/scan](https://qrturn.com/scan)
 
 ### How to generate QR code.
 
 [https://qrturn.com/gen?data=helloworld](https://qrturn.com/gen?data=helloworld)
 
-### How to integrate QR code with your APP.
+### How to integrate QR code with your app.
 
 [https://qrturn.com/api](https://qrturn.com/api)
 
