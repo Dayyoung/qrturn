@@ -3,22 +3,22 @@
 <head>
   <title>QRTurn.com</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <script type="text/javascript" src="/qrturn.js"></script>
+  <script type="text/javascript" src="https://qrturn.com/qrturn.js"></script>
 
   <script type="text/javascript">
 
 
-function scanQR() {
-  QRTurn.returnUrl = "https://google.com?param=data" // QR scan
-  QRTurn.scan()
-}
-function generateQR() {
-  QRTurn.data = "dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?acmount=12" // QR generation
-  QRTurn.gen()
+  function scanQR() {
+    QRTurn.returnUrl = "https://google.com?param=data" // QR scan
+    QRTurn.scan()
+  }
+  function generateQR() {
+    QRTurn.data = "dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?acmount=12" // QR generation
+    QRTurn.gen()
 
-}
+  }
 
   </script>
 </head>

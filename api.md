@@ -37,9 +37,13 @@ QRTurn.gen()
 ```
 
 # TESTING
+
+ [JSFiddle](https://jsfiddle.net/sx4z0qo9/)
+
  [Click here for testing : /test.html](/test.html)
 
  [Click here for contacting : dryudryu@gmail.com](mailto:dryudryu@gmail.com)
+
 
 # LICENSE
 [MPL-2.0](https://www.mozilla.org/MPL/2.0/)
