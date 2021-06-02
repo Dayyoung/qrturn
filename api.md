@@ -36,14 +36,30 @@ QRTurn.data = "dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?acmount=12" // QR gen
 QRTurn.gen()
 ```
 
+# INSTALLATION TO YOUR APP
+
+For Android 
+
+```
+String url = "https://qrturn.com/scan?returnUrl={YOUR_APP_SCHEME}"
+Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+browserIntent.setData(Uri.parse(url));
+startActivity(browserIntent);
+
+```
+
+For iOS 
+
+```
+let goUrl = URL(string: "https://qrturn.com/scan?returnUrl={YOUR_APP_SCHEME}")
+UIApplication.shared.open(goUrl!, options: [:], completionHandler: nil)
+```
+
 # TESTING
 
  [JSFiddle](https://jsfiddle.net/sx4z0qo9/)
-
  [Click here for testing : /test.html](/test.html)
-
  [Click here for contacting : dryudryu@gmail.com](mailto:dryudryu@gmail.com)
-
 
 # LICENSE
 [MPL-2.0](https://www.mozilla.org/MPL/2.0/)
