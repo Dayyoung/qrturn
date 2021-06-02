@@ -1,3 +1,31 @@
+
+var QRTurn = function () {
+	
+}
+
+QRTurn.prototype.scan = function()
+{
+  var PREFIX = "https://qrturn.com/scan"
+
+  if(this.returnUrl){
+  	PREFIX += PREFIX + "?returnUrl=" + this.returnUrl
+  }
+  var popup = window.open(PREFIX, "QRTurn.com", "width=500, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );    
+  popup.focus()
+}
+
+QRTurn.prototype.gen = function()
+{
+  var PREFIX = "https://qrturn.com/gen"
+
+  if(this.data){
+  	PREFIX += PREFIX + "?data=" + this.data
+  }
+  var popup = window.open(PREFIX, "QRTurn.com", "width=500, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );    
+  popup.focus()
+}
+
+
 /* qr.js -- QR code generator in Javascript (revision 2011-01-19)
  * Written by Kang Seonghoon <public+qrjs@mearie.org>.
  *
