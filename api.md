@@ -10,7 +10,7 @@ QRTurn.com is the WEB application for QR code scan or generation.
 - `redirectUrl` - This is the final destination where the QR data is delivered.
 
 **data**
-- `data` - This is the data that generates the QR code.
+- `data` - This is the data that generates by QR code.
 
 ```
 https://qrturn.com/scan?returnUrl=https://google.com
