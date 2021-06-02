@@ -1,6 +1,5 @@
-
 var QRTurn = function () {
-
+	
 }
 
 QRTurn.prototype.scan = function()
