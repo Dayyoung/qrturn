@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QRTurn.com</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script type="text/javascript" src="/qrturn.js"></script>
+
+  <script type="text/javascript">
+
+
+function scanQR() {
+  QRTurn.returnUrl = "https://google.com?param=data" // QR scan
+  QRTurn.scan()
+}
+function generateQR() {
+  QRTurn.data = "dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?acmount=12" // QR generation
+  QRTurn.gen()
+
+}
+
+  </script>
+</head>
+
+<style type="text/css">
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin : 5px;
+    width : 300px;
+} 
+.button1 {background-color: #4CAF50;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+</style>
+
+<body>
+  <br>
+  <h3>QRTurn.com - Click the button for testing.</h3>
+
+  <br>
+
+  <br> Scan QR : <br>
+  <button class="button button1" onclick="scanQR()">SCAN QR</button>
+  <br> Generation QR : <br>
+  <button class="button button2" onclick="generateQR()">GENERATION QR</button>
+  <br>
+
+</body>
+
+</html>

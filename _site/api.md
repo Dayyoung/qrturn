@@ -14,10 +14,10 @@ QRTurn.com is the WEB application for QR code scan or generation.
 
 ```
 https://qrturn.com/scan?returnUrl=https://google.com
-//For sell ​​with 12 Dogecoin (DOGE)
+//Scan QR code and receive data into returnUrl.
 
-https://qrturn.com/scan?returnUrl=https://google.com
-//For sell ​​with 12 Dogecoin (DOGE)
+https://qrturn.com/gen?datal=dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?acmount=12
+//Generation QR code For sell ​​with 12 Dogecoin.
 
 ```
 
@@ -35,6 +35,11 @@ QRTurn.scan()
 QRTurn.data = "dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?acmount=12" // QR generation
 QRTurn.gen()
 ```
+
+# TESTING
+ [Click here for testing : /test.html](/test.html)
+
+ [Click here for contacting : dryudryu@gmail.com](mailto:dryudryu@gmail.com)
 
 # LICENSE
 [MPL-2.0](https://www.mozilla.org/MPL/2.0/)

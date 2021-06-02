@@ -36,5 +36,10 @@ QRTurn.data = "dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?acmount=12" // QR gen
 QRTurn.gen()
 ```
 
+# TESTING
+ [Click here for testing : /test.html](/test.html)
+
+ [Click here for contacting : dryudryu@gmail.com](mailto:dryudryu@gmail.com)
+
 # LICENSE
 [MPL-2.0](https://www.mozilla.org/MPL/2.0/)
