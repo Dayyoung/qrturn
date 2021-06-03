@@ -16,5 +16,5 @@ https://qrturn.com/gen?PRODUCT=TOMATO&PRICE=0.001&data=dogecoin:DN7WNoyLx6DRoQpu
 
 Sell ​​products using Dogecoin!
 
-<img width="490" alt="tomato" src="https://user-images.githubusercontent.com/6928193/120575961-f61c0980-c45c-11eb-8af7-83b6d1f12214.png">
+<img width="482" alt="tomato" src="https://user-images.githubusercontent.com/6928193/120576241-6dea3400-c45d-11eb-8a1c-0761085613c9.png">
 
