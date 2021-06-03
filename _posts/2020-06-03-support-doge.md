@@ -5,6 +5,7 @@ categories:
   - New
 tags:
   - New
+---
 
 When the seller obtains the buyer's address :
 https://qrturn.com/scan
