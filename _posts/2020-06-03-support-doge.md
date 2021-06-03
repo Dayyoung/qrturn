@@ -1,5 +1,6 @@
 ---
 title:  "QRTurn support DOGE trade fully."
+author:  "QRTurn.com"
 
 categories:
   - New
