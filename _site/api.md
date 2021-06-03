@@ -10,13 +10,13 @@ QRTurn.com is the WEB application for QR code scan or generation.
 - `redirectUrl` - This is the final destination where the QR data is delivered.
 
 **data**
-- `data` - This is the data that generates the QR code.
+- `data` - This is the data that generates by QR code.
 
 ```
 https://qrturn.com/scan?returnUrl=https://google.com
 //Scan QR code and receive data into returnUrl.
 
-https://qrturn.com/gen?datal=dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?amount=12
+https://qrturn.com/gen?data=dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?amount=12
 //Generation QR code For sell ​​with 12 Dogecoin.
 
 ```
@@ -36,9 +36,31 @@ QRTurn.data = "dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?amount=12" // QR gene
 QRTurn.gen()
 ```
 
-# TESTING
- [Click here for testing : /test.html](/test.html)
+# INSTALLATION TO YOUR APP
 
+For Android 
+
+```
+String url = "https://qrturn.com/scan?returnUrl={YOUR_APP_SCHEME}"
+Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+browserIntent.setData(Uri.parse(url));
+startActivity(browserIntent);
+
+```
+
+For iOS 
+
+```
+let goUrl = URL(string: "https://qrturn.com/scan?returnUrl={YOUR_APP_SCHEME}")
+UIApplication.shared.open(goUrl!, options: [:], completionHandler: nil)
+```
+
+# TESTING
+
+ [JSFiddle](https://jsfiddle.net/sx4z0qo9/)
+
+ [Click here for testing : /test.html](/test.html)
+ 
  [Click here for contacting : dryudryu@gmail.com](mailto:dryudryu@gmail.com)
 
 # LICENSE

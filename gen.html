@@ -115,9 +115,20 @@ ons-input, ons-radio, ons-checkbox, ons-search-input {
 
   <ons-card style="margin: 20px;" id="walletCard">
     <center>
-    <img id="qrCode" src="./qrturn.png" alt="Onsen UI" style="width: 50%">
+    <a download="qrturn.png" id = "qrCodeUrl" >
+    <img id="qrCode" onClick="download(this)" src="./qrturn.png" alt="Onsen UI" style="width: 50%">
+    </a>
 <br>
 
+
+    <div class="content">
+      <ons-list id="adapter">
+        <ons-list-header>Information</ons-list-header>
+          <ons-list-item id="item" style="display: none" class="list-item"><div class="center list-item__center">test</div></ons-list-item>
+      </ons-list>
+    </div>
+
+<br>
 <textarea class="textarea" rows="10" placeholder="DATA" id="qrData"></textarea>
 
 <br>
@@ -164,6 +175,20 @@ function updateQueryStringParameter(uri, key, value) {
   }
 }
 
+var getParams = function (url = window.location.href) {
+    var params = {};
+    var match = url.match(/\?(.*)$/);
+
+    if (match && match[1]) {
+        match[1].split('&').forEach(function (pair) {
+            pair = pair.split('=');
+            params[pair[0]] = pair[1];
+        });
+    }
+
+    return params;
+};
+
 
 function getParameterByName(name, url = window.location.href) {
   name = name.replace(/[\[\]]/g, '\\$&');
@@ -185,6 +210,11 @@ function goBack() {
   }
 }
 
+function download(base64){
+  console.log(base64.src)
+  window.open(base64.src)
+}
+
 $(document).ready(function(){
   if(DATA){
     $("#qrData").val(DATA)
@@ -192,6 +222,24 @@ $(document).ready(function(){
     var qrCode = QRCode.generatePNG(DATA, options);
     //console.log(qrCode)
     $("#qrCode").attr("src",qrCode)
+    $("#qrCodeUrl").attr("href",qrCode)
+  }
+
+
+});
+
+
+//page init
+document.addEventListener('init', function(event) {
+ //console.log('This is a lifecycle event!', event.target.id);
+  //alert(JSON.stringify(getParams()))
+  var jsonData = getParams()
+  for(key in jsonData) {
+      var item = $("#item").clone()
+      item.find("div").html(key+" : " +jsonData[key])
+      item.show()
+      $("#adapter").append(item)
+      //console.log('key:' + key + ' / ' + 'value:' + jsonData[key]);
   }
 });
 

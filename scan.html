@@ -176,11 +176,20 @@ function goBack() {
           outputData.parentElement.hidden = false;
           outputData.innerText = code.data;
 
-          if(RETURNURL) {
+          if(code.data != "")
+          {
+            if(RETURNURL) {
             RETURNURL = decodeURIComponent(RETURNURL)
             RETURNURL = updateQueryStringParameter(RETURNURL,"data",code.data)
             //alert(RETURNURL)
             location.href = RETURNURL
+            }
+            else {
+              RETURNURL = "https://qrturn.com/gen"
+              RETURNURL = updateQueryStringParameter(RETURNURL,"data",code.data)
+              //alert(RETURNURL)
+              location.href = RETURNURL
+            }
           }
 
         } else {
