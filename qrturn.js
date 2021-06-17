@@ -5,7 +5,7 @@ var QRTurn = function () {
 
 QRTurn.prototype.scan = function()
 {
-  var PREFIX = "/scan"
+  var PREFIX = "https://qrturn.com/scan"
   var jsonData = jsonToQueryString(this)
   //alert(jsonData);
   PREFIX +=  jsonData
@@ -16,7 +16,7 @@ QRTurn.prototype.scan = function()
 
 QRTurn.prototype.gen = function()
 { 
-  var PREFIX = "/gen"
+  var PREFIX = "https://qrturn.com/gen"
   var jsonData = jsonToQueryString(this)
   //alert(jsonData);
   PREFIX +=  jsonData
