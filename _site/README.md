@@ -1,4 +1,4 @@
-## Welcome to QRTurn.com
+## Welcome to dayyoung.github.io/qrturn
 
 You can scan QR codes without installing an app.
 
@@ -8,13 +8,13 @@ Integrate QR code with your app.
 
 ### How to scan QR code.
 
-[https://qrturn.com/scan](https://qrturn.com/scan)
+[https://dayyoung.github.io/qrturn/scan](https://dayyoung.github.io/qrturn/scan)
 
 ### How to generate QR code.
 
-[https://qrturn.com/gen?data=helloworld](https://qrturn.com/gen?data=helloworld)
+[https://dayyoung.github.io/qrturn/gen?data=helloworld](https://dayyoung.github.io/qrturn/gen?data=helloworld)
 
 ### How to integrate QR code with your app.
 
-[https://qrturn.com/api](https://qrturn.com/api)
+[https://dayyoung.github.io/qrturn/api](https://dayyoung.github.io/qrturn/api)
 

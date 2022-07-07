@@ -1,6 +1,6 @@
 ---
 title:  "QRTurn support DOGE trade fully."
-author:  "QRTurn.com"
+author:  "dayyoung.github.io/qrturn"
 
 categories:
   - New
@@ -9,10 +9,10 @@ tags:
 ---
 
 When the seller obtains the buyer's address :
-[https://qrturn.com/scan](https://qrturn.com/scan)
+[https://dayyoung.github.io/qrturn/scan](https://dayyoung.github.io/qrturn/scan)
 
 When the seller provides sales information :
-[https://qrturn.com/gen?PRODUCT=TOMATO&PRICE=1&data=dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A](https://qrturn.com/gen?PRODUCT=TOMATO&PRICE=1&data=dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A)
+[https://dayyoung.github.io/qrturn/gen?PRODUCT=TOMATO&PRICE=1&data=dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A](https://dayyoung.github.io/qrturn/gen?PRODUCT=TOMATO&PRICE=1&data=dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A)
 
 
 Sell ​​products using Dogecoin!

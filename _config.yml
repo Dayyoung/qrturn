@@ -1,8 +1,8 @@
 theme: jekyll-theme-minimal
-title: QRTurn.com
+title: dayyoung.github.io/qrturn
 description: HTML5 QR Web Application
-logo: https://qrturn.com/qrturn.png
+logo: https://dayyoung.github.io/qrturn/qrturn.png
 port: 80
 google_analytics : G-XW3LSKJQG4
-url : https://qrturn.com
+url : https://dayyoung.github.io/qrturn
 

@@ -1,6 +1,6 @@
-# QRTurn.com API Document
+# dayyoung.github.io/qrturn API Document
 
-QRTurn.com is the WEB application for QR code scan or generation.
+dayyoung.github.io/qrturn is the WEB application for QR code scan or generation.
 
 "QR Everywhere."
 
@@ -13,10 +13,10 @@ QRTurn.com is the WEB application for QR code scan or generation.
 - `data` - This is the data that generates by QR code.
 
 ```
-https://qrturn.com/scan?returnUrl=https://google.com
+https://dayyoung.github.io/qrturn/scan?returnUrl=https://google.com
 //Scan QR code and receive data into returnUrl.
 
-https://qrturn.com/gen?data=dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?amount=12
+https://dayyoung.github.io/qrturn/gen?data=dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?amount=12
 //Generation QR code For sell ​​with 12 Dogecoin.
 
 ```
@@ -25,7 +25,7 @@ https://qrturn.com/gen?data=dogecoin:DN7WNoyLx6DRoQpuzpcLhV95vLARFdbZ9A?amount=1
 Include script on your site.
 
 ```
-<script type="text/javascript" src="https://qrturn.com/qrturn.js"></script>
+<script type="text/javascript" src="https://dayyoung.github.io/qrturn/qrturn.js"></script>
 ```
 
 ```
@@ -41,7 +41,7 @@ QRTurn.gen()
 For Android 
 
 ```
-String url = "https://qrturn.com/scan?returnUrl={YOUR_APP_SCHEME}"
+String url = "https://dayyoung.github.io/qrturn/scan?returnUrl={YOUR_APP_SCHEME}"
 Intent browserIntent = new Intent(Intent.ACTION_VIEW);
 browserIntent.setData(Uri.parse(url));
 startActivity(browserIntent);
@@ -51,7 +51,7 @@ startActivity(browserIntent);
 For iOS 
 
 ```
-let goUrl = URL(string: "https://qrturn.com/scan?returnUrl={YOUR_APP_SCHEME}")
+let goUrl = URL(string: "https://dayyoung.github.io/qrturn/scan?returnUrl={YOUR_APP_SCHEME}")
 UIApplication.shared.open(goUrl!, options: [:], completionHandler: nil)
 ```
 

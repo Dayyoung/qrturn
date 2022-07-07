@@ -5,23 +5,23 @@ var QRTurn = function () {
 
 QRTurn.prototype.scan = function()
 {
-  var PREFIX = "https://qrturn.com/scan"
+  var PREFIX = "https://dayyoung.github.io/qrturn/scan"
   var jsonData = jsonToQueryString(this)
   //alert(jsonData);
   PREFIX +=  jsonData
 
-  var popup = window.open(PREFIX, "QRTurn.com", "width=500, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );    
+  var popup = window.open(PREFIX, "dayyoung.github.io/qrturn", "width=500, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );    
   popup.focus()
 }
 
 QRTurn.prototype.gen = function()
 { 
-  var PREFIX = "https://qrturn.com/gen"
+  var PREFIX = "https://dayyoung.github.io/qrturn/gen"
   var jsonData = jsonToQueryString(this)
   //alert(jsonData);
   PREFIX +=  jsonData
  
-  var popup = window.open(PREFIX, "QRTurn.com", "width=500, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );    
+  var popup = window.open(PREFIX, "dayyoung.github.io/qrturn", "width=500, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );    
   popup.focus()
 }
 
